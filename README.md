@@ -1,6 +1,6 @@
 # PyTorch 图像分类实验仓库
 
-佛山大学《AI 项目实训》课程仓库，包含 4 个实验。当前处于准备阶段，实验代码和实验文件夹尚未创建。
+佛山大学《AI 项目实训》课程仓库，包含 4 个实验。目前实验1 的目录和代码已建好，其余实验待开始。
 
 课程要求原文在 `docs/_AI项目实训_实验大纲.pdf`，代码和文档写法以 `docs/项目规范.md` 为准。
 
@@ -13,12 +13,22 @@ PyTorch-Image-Classification-Lab/
 ├─ README.md                     # 本文件：结构索引 + 使用约定
 ├─ AGENTS.md                     # 给 AI 助手的工作规则
 ├─ .gitignore                    # 不提交的数据、权重、密钥
-└─ docs/
-   ├─ _AI项目实训_实验大纲.pdf                        # 课程要求原文
-   ├─ 项目规范.md                                    # 目录、命名、代码、Git 约定
-   ├─ 节点使用说明.md                                # DGX 节点连接、传文件、tmux
-   ├─ Spark云节点访问与使用手册(华硕).md             # 官方节点手册（Markdown 版）
-   └─ Spark云节点访问与使用手册(华硕) - 飞书云文档.pdf  # 官方节点手册（PDF 原件）
+├─ docs/
+│  ├─ _AI项目实训_实验大纲.pdf                        # 课程要求原文
+│  ├─ 项目规范.md                                    # 目录、命名、代码、Git 约定
+│  ├─ 节点使用说明.md                                # DGX 节点连接、传文件、tmux
+│  ├─ Spark云节点访问与使用手册(华硕).md             # 官方节点手册（Markdown 版）
+│  └─ Spark云节点访问与使用手册(华硕) - 飞书云文档.pdf  # 官方节点手册（PDF 原件）
+└─ exp1_image_classification/    # 实验1：CIFAR-10 图像分类
+   ├─ README.md                  # 实验说明、运行方法、超参数、结果记录
+   ├─ data.py                    # 数据加载、划分、增强
+   ├─ model.py                   # 轻量 CNN（BN/Dropout 可开关）
+   ├─ train.py                   # 训练入口
+   ├─ evaluate.py                # 测试集评估、混淆矩阵、错例图
+   ├─ data/                      # CIFAR-10 数据（不进 Git）
+   ├─ figures/                   # 曲线、混淆矩阵、错例图
+   ├─ logs/                      # CSV 日志、配置、测试报告
+   └─ checkpoints/               # 模型权重（不进 Git）
 ```
 
 ### 文件索引：什么问题读哪个文件
@@ -30,6 +40,7 @@ PyTorch-Image-Classification-Lab/
 | `docs/节点使用说明.md` | SSH 连接、scp/rsync、tmux、常见报错 | 要用 DGX 节点训练时 |
 | `docs/Spark云节点访问与使用手册(华硕).md` | 官方手册：端口、隧道、文件传输、使用红线 | 查节点规则和端口时 |
 | `docs/_AI项目实训_实验大纲.pdf` | 课程要求、实验内容、学时、评分 | 写报告、确认要求时 |
+| `exp1_image_classification/README.md` | 实验1 的数据集、跑法、超参数、结果记录 | 跑实验1 时 |
 | `.gitignore` | 哪些文件不进 Git | 提交前 |
 
 ## 实验文件夹的标准结构（建好后）
@@ -96,7 +107,7 @@ expX_xxx/
 
 ## 怎么跑
 
-当前仓库还没有可运行代码。实验文件夹建好后，运行命令写在各实验的 `README.md` 里，不要在这里重复。
+实验1 的运行命令见 `exp1_image_classification/README.md`。其余实验的运行命令写在各实验的 `README.md` 里，不要在这里重复。
 
 - 本机：Python 3.14 + CPU 版 torch，适合先跑 1～2 个 epoch 验证代码。
 - DGX 节点：正式训练用，连接和环境激活见 `docs/节点使用说明.md`。
