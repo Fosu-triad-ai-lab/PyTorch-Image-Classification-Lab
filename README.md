@@ -117,6 +117,6 @@ expX_xxx/
 
 ## Git 约定
 
-- **Lucky（管理员，可写）**：直接在 `main` 上 commit、push；AI 助手可以随手 commit，别动分支。
-- **其他两人（只读权限）**：统一走 PR——Fork 主仓库 → 克隆自己的 Fork → 改完 push 到 Fork → 向主仓库发 Pull Request，等 Lucky 合并。详细步骤见 `docs/项目规范.md` 第六节。
+- **Lucky（管理员）**：直接在 `main` 上 commit、push；AI 助手可以随手 commit，别动分支。
+- **其他两人（写权限）**：`main` 受分支保护，不能直接 push——改动走自己的分支 + PR：开分支 → commit → push 分支 → 网页上点 **Compare & pull request** → 群里喊 Lucky 合并。详细步骤见 `docs/项目规范.md` 第六节。
 - 共同约定：每天开工先 `git pull`；一次提交只做一件事，信息写中文短句（如 `实验1：完成数据加载`）；只改自己负责的文件夹；遇到冲突不要 `--force`，停下来问。
