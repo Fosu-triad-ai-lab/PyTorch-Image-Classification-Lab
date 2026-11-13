@@ -36,9 +36,9 @@ PyTorch-Image-Classification-Lab/
 
 | 文件 | 内容 | 什么时候读 |
 | --- | --- | --- |
-| `AGENTS.md` | AI 助手的工作规则、本机环境、节点红线 | 让 AI 改代码之前 |
+| `AGENTS.md` | AI 助手的工作规则、节点环境、红线 | 让 AI 改代码之前 |
 | `docs/项目规范.md` | 目录结构、命名、每个实验必须有的东西、Git 最简用法 | 新建实验、写代码之前 |
-| `docs/节点使用说明.md` | SSH 连接、scp/rsync、tmux、常见报错 | 要用 DGX 节点训练时 |
+| `docs/节点使用说明.md` | SSH 连接、代码同步、传文件、tmux、常见报错 | 要用 DGX 节点训练时 |
 | `docs/Spark云节点访问与使用手册(华硕).md` | 官方手册：端口、隧道、文件传输、使用红线 | 查节点规则和端口时 |
 | `docs/_AI项目实训_实验大纲.pdf` | 课程要求、实验内容、学时、评分 | 写报告、确认要求时 |
 | `exp1_image_classification/README.md` | 实验1 的数据集、跑法、超参数、结果记录 | 跑实验1 时 |
@@ -111,13 +111,12 @@ expX_xxx/
 
 实验1 的运行命令见 `exp1_image_classification/README.md`。其余实验的运行命令写在各实验的 `README.md` 里，不要在这里重复。
 
-- 本机：Python 3.14 + CPU 版 torch，适合先跑 1～2 个 epoch 验证代码。
-- DGX 节点：正式训练用，连接和环境激活见 `docs/节点使用说明.md`。
+- 实验统一在 DGX 云节点上跑：想登节点先找 LXJ，连接和环境激活见 `docs/节点使用说明.md`。
+- 代码同步优先 git：节点上克隆了同一仓库（`~/cnn/lucky/lab`），直接 pull/push；权重、数据集等不进 Git 的文件用 scp/rsync 传，见节点说明第 5 节。
 - 云节点规则以 `docs/Spark云节点访问与使用手册(华硕).md` 第八节为准。
 
-## Git 最简约定
+## Git 约定
 
-1. 每天开工先 `git pull`，收工前 `git push`。
-2. 只改自己负责的文件夹；动别人的文件先在群里说。
-3. 一次提交只做一件事，信息写中文短句，例如 `实验1：完成数据加载`。
-4. 遇到冲突不要 `git push --force`，停下来问。
+- **Lucky（管理员，可写）**：直接在 `main` 上 commit、push；AI 助手可以随手 commit，别动分支。
+- **其他两人（只读权限）**：统一走 PR——Fork 主仓库 → 克隆自己的 Fork → 改完 push 到 Fork → 向主仓库发 Pull Request，等 Lucky 合并。详细步骤见 `docs/项目规范.md` 第六节。
+- 共同约定：每天开工先 `git pull`；一次提交只做一件事，信息写中文短句（如 `实验1：完成数据加载`）；只改自己负责的文件夹；遇到冲突不要 `--force`，停下来问。
