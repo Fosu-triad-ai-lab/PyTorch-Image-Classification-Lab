@@ -1,0 +1,5 @@
+config,seconds
+baseline,121
+bn,136
+dropout,122
+bn_dropout,139

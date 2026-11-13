@@ -1,0 +1,224 @@
+===== 开始 2026-11-13 18:48:32 =====
+设备: NVIDIA GB10
+===== 训练 baseline 开始 2026-11-13 18:48:33 =====
+实验名: simplecnn_bn0_drop0
+设备: cuda
+配置: BN=False Dropout=False epochs=20 batch_size=128 lr=0.05
+参数量: 3.25M
+Epoch 01/20 | train loss 2.1889 acc 0.1615 | val loss 2.0350 acc 0.2314 | lr 0.05000
+  -> 保存最优模型（val acc 0.2314）
+Epoch 02/20 | train loss 1.6133 acc 0.3966 | val loss 1.3822 acc 0.5024 | lr 0.04969
+  -> 保存最优模型（val acc 0.5024）
+Epoch 03/20 | train loss 1.2854 acc 0.5316 | val loss 1.1245 acc 0.6012 | lr 0.04878
+  -> 保存最优模型（val acc 0.6012）
+Epoch 04/20 | train loss 1.0540 acc 0.6250 | val loss 0.9433 acc 0.6666 | lr 0.04728
+  -> 保存最优模型（val acc 0.6666）
+Epoch 05/20 | train loss 0.9084 acc 0.6798 | val loss 0.7473 acc 0.7366 | lr 0.04523
+  -> 保存最优模型（val acc 0.7366）
+Epoch 06/20 | train loss 0.7802 acc 0.7267 | val loss 0.6969 acc 0.7582 | lr 0.04268
+  -> 保存最优模型（val acc 0.7582）
+Epoch 07/20 | train loss 0.6992 acc 0.7568 | val loss 0.6322 acc 0.7768 | lr 0.03969
+  -> 保存最优模型（val acc 0.7768）
+Epoch 08/20 | train loss 0.6304 acc 0.7810 | val loss 0.6486 acc 0.7770 | lr 0.03635
+  -> 保存最优模型（val acc 0.7770）
+Epoch 09/20 | train loss 0.5698 acc 0.8034 | val loss 0.5533 acc 0.8120 | lr 0.03273
+  -> 保存最优模型（val acc 0.8120）
+Epoch 10/20 | train loss 0.5161 acc 0.8215 | val loss 0.5519 acc 0.8040 | lr 0.02891
+Epoch 11/20 | train loss 0.4727 acc 0.8354 | val loss 0.4654 acc 0.8374 | lr 0.02500
+  -> 保存最优模型（val acc 0.8374）
+Epoch 12/20 | train loss 0.4252 acc 0.8520 | val loss 0.4815 acc 0.8310 | lr 0.02109
+Epoch 13/20 | train loss 0.3845 acc 0.8671 | val loss 0.4616 acc 0.8420 | lr 0.01727
+  -> 保存最优模型（val acc 0.8420）
+Epoch 14/20 | train loss 0.3499 acc 0.8778 | val loss 0.4130 acc 0.8604 | lr 0.01365
+  -> 保存最优模型（val acc 0.8604）
+Epoch 15/20 | train loss 0.3161 acc 0.8898 | val loss 0.4208 acc 0.8542 | lr 0.01031
+Epoch 16/20 | train loss 0.2812 acc 0.9018 | val loss 0.3853 acc 0.8674 | lr 0.00732
+  -> 保存最优模型（val acc 0.8674）
+Epoch 17/20 | train loss 0.2558 acc 0.9112 | val loss 0.3723 acc 0.8736 | lr 0.00477
+  -> 保存最优模型（val acc 0.8736）
+Epoch 18/20 | train loss 0.2354 acc 0.9189 | val loss 0.3670 acc 0.8766 | lr 0.00272
+  -> 保存最优模型（val acc 0.8766）
+Epoch 19/20 | train loss 0.2202 acc 0.9229 | val loss 0.3637 acc 0.8800 | lr 0.00122
+  -> 保存最优模型（val acc 0.8800）
+Epoch 20/20 | train loss 0.2126 acc 0.9264 | val loss 0.3565 acc 0.8814 | lr 0.00031
+  -> 保存最优模型（val acc 0.8814）
+
+训练结束，最优验证准确率: 0.8814
+日志: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/logs/simplecnn_bn0_drop0.csv
+曲线: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn0_drop0_curves.png
+最优模型: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/checkpoints/simplecnn_bn0_drop0.pth
+===== 训练 baseline 结束，耗时 121 秒 =====
+===== 训练 bn 开始 2026-11-13 18:50:34 =====
+实验名: simplecnn_bn1_drop0
+设备: cuda
+配置: BN=True Dropout=False epochs=20 batch_size=128 lr=0.05
+参数量: 3.25M
+Epoch 01/20 | train loss 1.6123 acc 0.4067 | val loss 1.5781 acc 0.4568 | lr 0.05000
+  -> 保存最优模型（val acc 0.4568）
+Epoch 02/20 | train loss 1.1287 acc 0.5938 | val loss 1.3252 acc 0.5532 | lr 0.04969
+  -> 保存最优模型（val acc 0.5532）
+Epoch 03/20 | train loss 0.8891 acc 0.6855 | val loss 0.8326 acc 0.7082 | lr 0.04878
+  -> 保存最优模型（val acc 0.7082）
+Epoch 04/20 | train loss 0.7484 acc 0.7373 | val loss 0.7247 acc 0.7520 | lr 0.04728
+  -> 保存最优模型（val acc 0.7520）
+Epoch 05/20 | train loss 0.6454 acc 0.7756 | val loss 0.7579 acc 0.7482 | lr 0.04523
+Epoch 06/20 | train loss 0.5771 acc 0.8004 | val loss 0.7732 acc 0.7406 | lr 0.04268
+Epoch 07/20 | train loss 0.5177 acc 0.8204 | val loss 0.6015 acc 0.7932 | lr 0.03969
+  -> 保存最优模型（val acc 0.7932）
+Epoch 08/20 | train loss 0.4628 acc 0.8380 | val loss 0.5587 acc 0.8078 | lr 0.03635
+  -> 保存最优模型（val acc 0.8078）
+Epoch 09/20 | train loss 0.4189 acc 0.8546 | val loss 0.5698 acc 0.8112 | lr 0.03273
+  -> 保存最优模型（val acc 0.8112）
+Epoch 10/20 | train loss 0.3765 acc 0.8690 | val loss 0.4978 acc 0.8328 | lr 0.02891
+  -> 保存最优模型（val acc 0.8328）
+Epoch 11/20 | train loss 0.3403 acc 0.8828 | val loss 0.5133 acc 0.8264 | lr 0.02500
+Epoch 12/20 | train loss 0.3071 acc 0.8950 | val loss 0.4142 acc 0.8628 | lr 0.02109
+  -> 保存最优模型（val acc 0.8628）
+Epoch 13/20 | train loss 0.2694 acc 0.9067 | val loss 0.3791 acc 0.8714 | lr 0.01727
+  -> 保存最优模型（val acc 0.8714）
+Epoch 14/20 | train loss 0.2374 acc 0.9176 | val loss 0.4110 acc 0.8696 | lr 0.01365
+Epoch 15/20 | train loss 0.2058 acc 0.9293 | val loss 0.3475 acc 0.8878 | lr 0.01031
+  -> 保存最优模型（val acc 0.8878）
+Epoch 16/20 | train loss 0.1712 acc 0.9428 | val loss 0.3534 acc 0.8852 | lr 0.00732
+Epoch 17/20 | train loss 0.1497 acc 0.9488 | val loss 0.3136 acc 0.9012 | lr 0.00477
+  -> 保存最优模型（val acc 0.9012）
+Epoch 18/20 | train loss 0.1278 acc 0.9574 | val loss 0.2979 acc 0.9040 | lr 0.00272
+  -> 保存最优模型（val acc 0.9040）
+Epoch 19/20 | train loss 0.1163 acc 0.9616 | val loss 0.2950 acc 0.9068 | lr 0.00122
+  -> 保存最优模型（val acc 0.9068）
+Epoch 20/20 | train loss 0.1097 acc 0.9637 | val loss 0.2955 acc 0.9058 | lr 0.00031
+
+训练结束，最优验证准确率: 0.9068
+日志: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/logs/simplecnn_bn1_drop0.csv
+曲线: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn1_drop0_curves.png
+最优模型: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/checkpoints/simplecnn_bn1_drop0.pth
+===== 训练 bn 结束，耗时 136 秒 =====
+===== 训练 dropout 开始 2026-11-13 18:52:50 =====
+实验名: simplecnn_bn0_drop1
+设备: cuda
+配置: BN=False Dropout=True epochs=20 batch_size=128 lr=0.05
+参数量: 3.25M
+Epoch 01/20 | train loss 2.0762 acc 0.2073 | val loss 1.8484 acc 0.2982 | lr 0.05000
+  -> 保存最优模型（val acc 0.2982）
+Epoch 02/20 | train loss 1.6384 acc 0.3840 | val loss 1.3842 acc 0.4968 | lr 0.04969
+  -> 保存最优模型（val acc 0.4968）
+Epoch 03/20 | train loss 1.3740 acc 0.4973 | val loss 1.1938 acc 0.5628 | lr 0.04878
+  -> 保存最优模型（val acc 0.5628）
+Epoch 04/20 | train loss 1.1887 acc 0.5720 | val loss 0.9594 acc 0.6536 | lr 0.04728
+  -> 保存最优模型（val acc 0.6536）
+Epoch 05/20 | train loss 1.0493 acc 0.6280 | val loss 0.9151 acc 0.6774 | lr 0.04523
+  -> 保存最优模型（val acc 0.6774）
+Epoch 06/20 | train loss 0.9429 acc 0.6699 | val loss 0.7629 acc 0.7294 | lr 0.04268
+  -> 保存最优模型（val acc 0.7294）
+Epoch 07/20 | train loss 0.8494 acc 0.7053 | val loss 0.7640 acc 0.7280 | lr 0.03969
+Epoch 08/20 | train loss 0.7854 acc 0.7289 | val loss 0.6481 acc 0.7676 | lr 0.03635
+  -> 保存最优模型（val acc 0.7676）
+Epoch 09/20 | train loss 0.7298 acc 0.7464 | val loss 0.6504 acc 0.7650 | lr 0.03273
+Epoch 10/20 | train loss 0.6725 acc 0.7680 | val loss 0.6086 acc 0.7822 | lr 0.02891
+  -> 保存最优模型（val acc 0.7822）
+Epoch 11/20 | train loss 0.6350 acc 0.7811 | val loss 0.5497 acc 0.8096 | lr 0.02500
+  -> 保存最优模型（val acc 0.8096）
+Epoch 12/20 | train loss 0.5873 acc 0.7976 | val loss 0.5455 acc 0.8096 | lr 0.02109
+Epoch 13/20 | train loss 0.5549 acc 0.8100 | val loss 0.4783 acc 0.8310 | lr 0.01727
+  -> 保存最优模型（val acc 0.8310）
+Epoch 14/20 | train loss 0.5105 acc 0.8243 | val loss 0.4597 acc 0.8440 | lr 0.01365
+  -> 保存最优模型（val acc 0.8440）
+Epoch 15/20 | train loss 0.4772 acc 0.8346 | val loss 0.4615 acc 0.8366 | lr 0.01031
+Epoch 16/20 | train loss 0.4508 acc 0.8446 | val loss 0.4301 acc 0.8510 | lr 0.00732
+  -> 保存最优模型（val acc 0.8510）
+Epoch 17/20 | train loss 0.4248 acc 0.8531 | val loss 0.3903 acc 0.8596 | lr 0.00477
+  -> 保存最优模型（val acc 0.8596）
+Epoch 18/20 | train loss 0.4057 acc 0.8600 | val loss 0.3919 acc 0.8634 | lr 0.00272
+  -> 保存最优模型（val acc 0.8634）
+Epoch 19/20 | train loss 0.3917 acc 0.8642 | val loss 0.3859 acc 0.8624 | lr 0.00122
+Epoch 20/20 | train loss 0.3916 acc 0.8638 | val loss 0.3734 acc 0.8652 | lr 0.00031
+  -> 保存最优模型（val acc 0.8652）
+
+训练结束，最优验证准确率: 0.8652
+日志: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/logs/simplecnn_bn0_drop1.csv
+曲线: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn0_drop1_curves.png
+最优模型: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/checkpoints/simplecnn_bn0_drop1.pth
+===== 训练 dropout 结束，耗时 122 秒 =====
+===== 训练 bn_dropout 开始 2026-11-13 18:54:52 =====
+实验名: simplecnn_bn1_drop1
+设备: cuda
+配置: BN=True Dropout=True epochs=20 batch_size=128 lr=0.05
+参数量: 3.25M
+Epoch 01/20 | train loss 1.9163 acc 0.2736 | val loss 1.6934 acc 0.3452 | lr 0.05000
+  -> 保存最优模型（val acc 0.3452）
+Epoch 02/20 | train loss 1.5790 acc 0.4070 | val loss 1.3367 acc 0.5014 | lr 0.04969
+  -> 保存最优模型（val acc 0.5014）
+Epoch 03/20 | train loss 1.2787 acc 0.5392 | val loss 1.1696 acc 0.5832 | lr 0.04878
+  -> 保存最优模型（val acc 0.5832）
+Epoch 04/20 | train loss 1.1045 acc 0.6093 | val loss 1.0962 acc 0.6272 | lr 0.04728
+  -> 保存最优模型（val acc 0.6272）
+Epoch 05/20 | train loss 0.9723 acc 0.6567 | val loss 1.0758 acc 0.6240 | lr 0.04523
+Epoch 06/20 | train loss 0.8706 acc 0.6965 | val loss 0.8031 acc 0.7230 | lr 0.04268
+  -> 保存最优模型（val acc 0.7230）
+Epoch 07/20 | train loss 0.7971 acc 0.7251 | val loss 0.7002 acc 0.7554 | lr 0.03969
+  -> 保存最优模型（val acc 0.7554）
+Epoch 08/20 | train loss 0.7230 acc 0.7516 | val loss 0.6924 acc 0.7646 | lr 0.03635
+  -> 保存最优模型（val acc 0.7646）
+Epoch 09/20 | train loss 0.6728 acc 0.7686 | val loss 0.6089 acc 0.7874 | lr 0.03273
+  -> 保存最优模型（val acc 0.7874）
+Epoch 10/20 | train loss 0.6283 acc 0.7845 | val loss 0.5336 acc 0.8182 | lr 0.02891
+  -> 保存最优模型（val acc 0.8182）
+Epoch 11/20 | train loss 0.5839 acc 0.8016 | val loss 0.5180 acc 0.8174 | lr 0.02500
+Epoch 12/20 | train loss 0.5464 acc 0.8145 | val loss 0.4546 acc 0.8438 | lr 0.02109
+  -> 保存最优模型（val acc 0.8438）
+Epoch 13/20 | train loss 0.5050 acc 0.8292 | val loss 0.5409 acc 0.8258 | lr 0.01727
+Epoch 14/20 | train loss 0.4775 acc 0.8374 | val loss 0.4371 acc 0.8496 | lr 0.01365
+  -> 保存最优模型（val acc 0.8496）
+Epoch 15/20 | train loss 0.4410 acc 0.8506 | val loss 0.3931 acc 0.8638 | lr 0.01031
+  -> 保存最优模型（val acc 0.8638）
+Epoch 16/20 | train loss 0.4136 acc 0.8603 | val loss 0.3970 acc 0.8640 | lr 0.00732
+  -> 保存最优模型（val acc 0.8640）
+Epoch 17/20 | train loss 0.3876 acc 0.8678 | val loss 0.3509 acc 0.8784 | lr 0.00477
+  -> 保存最优模型（val acc 0.8784）
+Epoch 18/20 | train loss 0.3715 acc 0.8726 | val loss 0.3506 acc 0.8774 | lr 0.00272
+Epoch 19/20 | train loss 0.3576 acc 0.8783 | val loss 0.3341 acc 0.8862 | lr 0.00122
+  -> 保存最优模型（val acc 0.8862）
+Epoch 20/20 | train loss 0.3492 acc 0.8812 | val loss 0.3348 acc 0.8858 | lr 0.00031
+
+训练结束，最优验证准确率: 0.8862
+日志: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/logs/simplecnn_bn1_drop1.csv
+曲线: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn1_drop1_curves.png
+最优模型: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/checkpoints/simplecnn_bn1_drop1.pth
+===== 训练 bn_dropout 结束，耗时 139 秒 =====
+===== 评估 baseline 开始 2026-11-13 18:57:11 =====
+加载模型: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/checkpoints/simplecnn_bn0_drop0.pth（训练到第 20 轮，验证准确率 0.8814）
+设备: cuda
+测试损失: 0.3742
+测试准确率: 0.8782
+评估报告: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/logs/simplecnn_bn0_drop0_test.txt
+混淆矩阵: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn0_drop0_confusion_matrix.png
+错例图: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn0_drop0_misclassified.png
+===== 评估 baseline 结束 2026-11-13 18:57:15 =====
+===== 评估 bn 开始 2026-11-13 18:57:15 =====
+加载模型: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/checkpoints/simplecnn_bn1_drop0.pth（训练到第 19 轮，验证准确率 0.9068）
+设备: cuda
+测试损失: 0.3184
+测试准确率: 0.9021
+评估报告: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/logs/simplecnn_bn1_drop0_test.txt
+混淆矩阵: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn1_drop0_confusion_matrix.png
+错例图: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn1_drop0_misclassified.png
+===== 评估 bn 结束 2026-11-13 18:57:19 =====
+===== 评估 dropout 开始 2026-11-13 18:57:19 =====
+加载模型: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/checkpoints/simplecnn_bn0_drop1.pth（训练到第 20 轮，验证准确率 0.8652）
+设备: cuda
+测试损失: 0.3935
+测试准确率: 0.8665
+评估报告: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/logs/simplecnn_bn0_drop1_test.txt
+混淆矩阵: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn0_drop1_confusion_matrix.png
+错例图: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn0_drop1_misclassified.png
+===== 评估 dropout 结束 2026-11-13 18:57:23 =====
+===== 评估 bn_dropout 开始 2026-11-13 18:57:23 =====
+加载模型: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/checkpoints/simplecnn_bn1_drop1.pth（训练到第 19 轮，验证准确率 0.8862）
+设备: cuda
+测试损失: 0.3545
+测试准确率: 0.8813
+评估报告: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/logs/simplecnn_bn1_drop1_test.txt
+混淆矩阵: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn1_drop1_confusion_matrix.png
+错例图: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/figures/simplecnn_bn1_drop1_misclassified.png
+===== 评估 bn_dropout 结束 2026-11-13 18:57:27 =====
+全部完成 2026-11-13 18:57:27

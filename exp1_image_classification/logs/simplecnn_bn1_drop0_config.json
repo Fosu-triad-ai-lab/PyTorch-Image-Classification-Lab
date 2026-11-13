@@ -1,0 +1,18 @@
+{
+  "data_dir": "data",
+  "epochs": 20,
+  "batch_size": 128,
+  "lr": 0.05,
+  "momentum": 0.9,
+  "weight_decay": 0.0005,
+  "num_workers": 4,
+  "seed": 42,
+  "use_bn": true,
+  "use_dropout": false,
+  "dropout_p": 0.3,
+  "run_name": "simplecnn_bn1_drop0",
+  "checkpoint_dir": "checkpoints",
+  "log_dir": "logs",
+  "figure_dir": "figures",
+  "device": "cuda"
+}

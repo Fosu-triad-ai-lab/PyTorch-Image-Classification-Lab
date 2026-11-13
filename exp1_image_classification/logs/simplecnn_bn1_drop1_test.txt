@@ -1,0 +1,38 @@
+模型: /home/asus_gx10/cnn/lucky/lab/exp1_image_classification/checkpoints/simplecnn_bn1_drop1.pth
+训练轮数: 19
+训练时验证准确率: 0.8862
+测试集样本数: 10000
+测试损失: 0.3545
+测试准确率: 0.8813
+
+各类别准确率:
+airplane: 0.9040
+automobile: 0.9530
+bird: 0.8120
+cat: 0.6920
+deer: 0.8880
+dog: 0.8360
+frog: 0.9410
+horse: 0.9060
+ship: 0.9430
+truck: 0.9380
+
+最容易混淆的类别对（真实 -> 预测: 数量）:
+cat -> dog: 139
+dog -> cat: 75
+cat -> frog: 47
+bird -> deer: 43
+bird -> frog: 42
+
+混淆矩阵（行 = 真实类别，列 = 预测类别）:
+       airpl autom  bird   cat  deer   dog  frog horse  ship truck
+airpla   904     8    22     7     3     0     4     5    31    16
+automo     6   953     1     1     0     0     1     0     4    34
+bird      34     0   812    24    43    27    42    10     3     5
+cat        9     2    34   692    38   139    47    15    11    13
+deer       6     1    25    19   888    14    28    15     4     0
+dog        6     1    16    75    29   836    11    21     1     4
+frog       3     1    14    12     9     9   941     5     2     4
+horse     10     0    12    13    28    20     2   906     1     8
+ship      29     8     1     4     0     1     4     0   943    10
+truck     10    31     2     4     1     0     0     0    14   938
