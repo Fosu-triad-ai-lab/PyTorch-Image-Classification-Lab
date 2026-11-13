@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# 数据集（按各实验 README 重新下载）
+data/
+datasets/
+
+# 模型权重
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.safetensors
+
+# 训练中间产物
+runs/
+*.tfevents.*
+
+# 密钥和私有信息
+secrets/
+.env.*
+!.env.example
+*.pem
+*.key
+*.ppk
+id_rsa*
+id_ed25519*
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
