@@ -1,0 +1,48 @@
+模型: /home/asus_gx10/cnn/lucky/lab/exp2_text_sentiment/checkpoints/lstm_glove.pth
+训练轮数: 9，训练时验证准确率: 0.8796
+测试集样本数: 25000
+测试损失: 0.4765
+测试准确率: 0.8585
+
+各类别准确率:
+negative: 0.8559
+positive: 0.8611
+
+混淆矩阵（行 = 真实类别，列 = 预测类别）:
+             negative   positive
+negative        10699       1801
+positive         1736      10764
+
+按评论长度分组的准确率（分词后的原始词数，不受截断影响）:
+  0~562 词: 23625 条, acc 0.8642
+  562~1123 词: 1368 条, acc 0.7624
+  1123~1685 词: 3 条, acc 0.6667
+  1685~2246 词: 4 条, acc 0.2500
+
+按 <unk>（生僻词/未登录词）占比分组的准确率:
+  0~6%: 22707 条, acc 0.8641
+  6~13%: 2208 条, acc 0.8025
+  13~19%: 79 条, acc 0.8481
+  19~26%: 6 条, acc 0.6667
+
+高置信错例 Top 20（真实 -> 预测, 置信度）:
+  negative -> positive, 置信度 1.0000 | This film derives from a Long Running ITV sitcom by the same name.The Sitcom lasted for half a decade roughly and brought to our screens Rigsby,Phillip,Alan,Mrs Jones & Vienna.<br /><br />Then in 1980
+  negative -> positive, 置信度 0.9999 | Two days ago I got a chance to watch this movie on Cable (TV-Asia). I have been very disturbed since then. The movie "Baghban" has been very successful in portraying only one side of the real life. It
+  negative -> positive, 置信度 0.9999 | Masterpiece. Carrot Top blows the screen away. Never has one movie captured the essence of the human spirit quite like "Chairman of the Board." 10/10... don't miss this instant classic.
+  negative -> positive, 置信度 0.9999 | I hesitated seeing this movie, having really enjoyed the original, 'Mostly Martha'. What a disappointment. Catherine Zeta Jones is a good actress but this wasn't her film. The original had poignant mo
+  negative -> positive, 置信度 0.9999 | Synopsis Correction: The ending does not show Ben cruising online for guys. He is looking up Arabic Language courses at The Presido Military Acadamy in San Francisco. Perhaps to Join the War in Iraq a
+  negative -> positive, 置信度 0.9999 | Surrender Cinema has been known for their extremely erotic, almost explicit sci-fi films. While they generally do very well at these (Femalien 1 & 2, Virtual Encounters), this particular entry seems t
+  negative -> positive, 置信度 0.9999 | I am a longtime fan of the original of this movie (Bella Martha/Mostly Martha), and everything that makes that movie great and enjoyable to watch is missing from this one. I miss the slow pace, the bu
+  negative -> positive, 置信度 0.9999 | This movie was pure genius. John Waters is brilliant. It is hilarious and I am not sick of it even after seeing it about 20 times since I bought it a few months ago. The acting is great, although Rick
+  negative -> positive, 置信度 0.9999 | These days, Ridley Scott is one of the top directors and producers and can command huge sums to helm movies--especially since he has films like ALIEN, GLADIATOR and BLADE RUNNER to his credit. So from
+  negative -> positive, 置信度 0.9998 | A couple of friends and myself visited the video shop a few years back and we were in one of those moods to rent some cheesy non seen flicks. My friend grabbed Head of the Family and we were greeted b
+  negative -> positive, 置信度 0.9998 | I really liked this quirky movie. The characters are not the bland beautiful people that show up in so many movies and on TV. It has a realistic edge, with a captivating story line. The main title seq
+  negative -> positive, 置信度 0.9998 | Don't get me wrong. I've got a considerable soft spot for the works of Charles Band, both as producer and director. But you've got to raise an eyebrow when the man who was willing to put his name to "
+  negative -> positive, 置信度 0.9997 | When Exploiters become evangelist, they still exploit in the name of poverty! <br /><br />My first reaction after seeing the movie is  God Bless me that I am not eating fish or any non-vegetarian pro
+  negative -> positive, 置信度 0.9997 | You Belong To Me was the final teaming of Henry Fonda and Barbara Stanwyck as a screen team and it was a loan out film for Fonda to Columbia Pictures. Fonda had signed a contract with 20th Century Fox
+  negative -> positive, 置信度 0.9997 | While this isn't one of Miss Davies' very worst films, it is pretty bad. And it's sad that in a revisionist fashion, recent IMDb raters have deliberately over-inflated the scores on some of her films
+  negative -> positive, 置信度 0.9997 | I'll say one thing for Herman, USA: it will probably always play well to Minnesota audiences. I can't imagine that there's another place in the world where a reference to the fast life of Bemidji or a
+  negative -> positive, 置信度 0.9997 | This is definitely one of the best Kung fu movies in the history of Cinema. The screenplay is really well done (which is not often the case for this type of movies) and you can see that Chuck (in one
+  negative -> positive, 置信度 0.9997 | As long as you keep in mind that the production of this movie was a copyright ploy, and not intended as a serious release, it is actually surprising how not absolutely horrible it is. I even liked the
+  negative -> positive, 置信度 0.9997 | The Brave One is about a New York radio show host named Erica Bain (Jodie Foster). Her life is a dream living in the city she grew up in and loves. She has her great fiancé David (Naveen Andrews), who
+  negative -> positive, 置信度 0.9997 | my friend and i rented this one a few nights ago. and, i must say, this is the single best movie i have ever seen. i mean, woah! "dude, we better get some brew before this joint closes" and "dude, lin

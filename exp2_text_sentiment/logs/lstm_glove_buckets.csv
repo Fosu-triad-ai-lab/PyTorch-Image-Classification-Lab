@@ -1,0 +1,9 @@
+kind,bucket,count,accuracy
+length,0~562,23625,0.8642
+length,562~1123,1368,0.7624
+length,1123~1685,3,0.6667
+length,1685~2246,4,0.2500
+oov_rate,0~6,22707,0.8641
+oov_rate,6~13,2208,0.8025
+oov_rate,13~19,79,0.8481
+oov_rate,19~26,6,0.6667

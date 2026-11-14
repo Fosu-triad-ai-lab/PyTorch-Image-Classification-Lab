@@ -1,6 +1,6 @@
 # PyTorch 图像分类实验仓库
 
-佛山大学《AI 项目实训》课程仓库，包含 4 个实验。目前实验1 已完成代码、四组对比实验和初步报告，其余实验待开始。
+佛山大学《AI 项目实训》课程仓库，包含 4 个实验。目前实验1、实验2 已完成代码与对比实验（实验2 报告待写），实验3 数据已就绪，实验4 待开始。
 
 课程要求原文在 `docs/_AI项目实训_实验大纲.pdf`，代码和文档写法以 `docs/项目规范.md` 为准。
 
@@ -20,14 +20,25 @@ PyTorch-Image-Classification-Lab/
 │  ├─ Spark云节点访问与使用手册(华硕).md             # 官方节点手册（Markdown 版）
 │  ├─ Spark云节点访问与使用手册(华硕) - 飞书云文档.pdf  # 官方节点手册（PDF 原件）
 │  └─ 实验1报告.md                                   # 实验1 初步报告（结果与分析）
-└─ exp1_image_classification/    # 实验1：CIFAR-10 图像分类
-   ├─ README.md                  # 实验说明、运行方法、超参数、结果记录
-   ├─ data.py                    # 数据加载、划分、增强
-   ├─ model.py                   # 轻量 CNN（BN/Dropout 可开关）
-   ├─ train.py                   # 训练入口
-   ├─ evaluate.py                # 测试集评估、混淆矩阵、错例图
-   ├─ data/                      # CIFAR-10 数据（不进 Git）
-   ├─ figures/                   # 曲线、混淆矩阵、错例图
+├─ exp1_image_classification/    # 实验1：CIFAR-10 图像分类
+│  ├─ README.md                  # 实验说明、运行方法、超参数、结果记录
+│  ├─ data.py                    # 数据加载、划分、增强
+│  ├─ model.py                   # 轻量 CNN（BN/Dropout 可开关）
+│  ├─ train.py                   # 训练入口
+│  ├─ evaluate.py                # 测试集评估、混淆矩阵、错例图
+│  ├─ data/                      # CIFAR-10 数据（不进 Git）
+│  ├─ figures/                   # 曲线、混淆矩阵、错例图
+│  ├─ logs/                      # CSV 日志、配置、测试报告
+│  └─ checkpoints/               # 模型权重（不进 Git）
+└─ exp2_text_sentiment/          # 实验2：IMDB 文本情感分类
+   ├─ README.md                  # 实验说明、数据下载方法、超参数、结果记录
+   ├─ data.py                    # 清洗分词、词表、GloVe 加载、DataLoader
+   ├─ model.py                   # Embedding+LSTM 情感二分类
+   ├─ train.py                   # 训练入口（随机/GloVe 词向量对比）
+   ├─ evaluate.py                # 测试评估、混淆矩阵、长度/生僻词分组、错例
+   ├─ noise_test.py              # 噪声鲁棒性实验（替换/删词）
+   ├─ data/                      # aclImdb + GloVe（不进 Git）
+   ├─ figures/                   # 曲线、混淆矩阵、噪声曲线
    ├─ logs/                      # CSV 日志、配置、测试报告
    └─ checkpoints/               # 模型权重（不进 Git）
 ```
@@ -42,6 +53,7 @@ PyTorch-Image-Classification-Lab/
 | `docs/Spark云节点访问与使用手册(华硕).md` | 官方手册：端口、隧道、文件传输、使用红线 | 查节点规则和端口时 |
 | `docs/_AI项目实训_实验大纲.pdf` | 课程要求、实验内容、学时、评分 | 写报告、确认要求时 |
 | `exp1_image_classification/README.md` | 实验1 的数据集、跑法、超参数、结果记录 | 跑实验1 时 |
+| `exp2_text_sentiment/README.md` | 实验2 的数据下载、跑法、超参数、噪声实验结果 | 跑实验2 时 |
 | `docs/实验1报告.md` | 实验1 初步报告、四组对比结果、错例分析 | 写/改报告时 |
 | `.gitignore` | 哪些文件不进 Git | 提交前 |
 
