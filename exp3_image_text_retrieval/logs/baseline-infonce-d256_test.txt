@@ -1,0 +1,12 @@
+模型: /home/asus_gx10/cnn/lucky/lab/exp3_image_text_retrieval/checkpoints/baseline-infonce-d256.pth
+训练轮次: 8
+评估划分: test
+样本: 1000 图 / 5000 条描述
+图像 -> 文本 Recall@1: 0.1230
+图像 -> 文本 Recall@5: 0.3330
+图像 -> 文本 Recall@10: 0.4770
+图像 -> 文本 中位排名: 12
+文本 -> 图像 Recall@1: 0.1018
+文本 -> 图像 Recall@5: 0.3006
+文本 -> 图像 Recall@10: 0.4378
+文本 -> 图像 中位排名: 14
