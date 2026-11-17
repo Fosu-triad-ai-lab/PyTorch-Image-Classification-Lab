@@ -1,0 +1,30 @@
+实验名: lstm_random
+设备: cuda
+词表大小: 20000（词频 >= 2，上限 20000）
+训练集 22500 条，验证集 2500 条
+参数量: 2.12M
+Epoch 01/10 | train loss 0.6647 acc 0.5868 | val loss 0.5935 acc 0.6780
+  -> 保存最优模型（val acc 0.6780）
+Epoch 02/10 | train loss 0.6215 acc 0.6565 | val loss 0.5889 acc 0.6972
+  -> 保存最优模型（val acc 0.6972）
+Epoch 03/10 | train loss 0.5578 acc 0.7221 | val loss 0.5239 acc 0.7496
+  -> 保存最优模型（val acc 0.7496）
+Epoch 04/10 | train loss 0.5251 acc 0.7488 | val loss 0.4694 acc 0.7912
+  -> 保存最优模型（val acc 0.7912）
+Epoch 05/10 | train loss 0.4676 acc 0.7903 | val loss 0.4100 acc 0.8248
+  -> 保存最优模型（val acc 0.8248）
+Epoch 06/10 | train loss 0.4064 acc 0.8256 | val loss 0.3772 acc 0.8348
+  -> 保存最优模型（val acc 0.8348）
+Epoch 07/10 | train loss 0.3470 acc 0.8552 | val loss 0.3573 acc 0.8556
+  -> 保存最优模型（val acc 0.8556）
+Epoch 08/10 | train loss 0.3185 acc 0.8707 | val loss 0.3197 acc 0.8668
+  -> 保存最优模型（val acc 0.8668）
+Epoch 09/10 | train loss 0.2684 acc 0.8928 | val loss 0.2949 acc 0.8832
+  -> 保存最优模型（val acc 0.8832）
+Epoch 10/10 | train loss 0.2379 acc 0.9056 | val loss 0.3112 acc 0.8788
+
+训练结束，耗时 0.6 分钟，最优验证准确率: 0.8832
+日志: /home/asus_gx10/cnn/lucky/lab/exp2_text_sentiment/logs/lstm_random.csv
+曲线: /home/asus_gx10/cnn/lucky/lab/exp2_text_sentiment/figures/lstm_random_curves.png
+最优模型: /home/asus_gx10/cnn/lucky/lab/exp2_text_sentiment/checkpoints/lstm_random.pth
+训练耗时: /home/asus_gx10/cnn/lucky/lab/exp2_text_sentiment/logs/lstm_random_train_time.txt

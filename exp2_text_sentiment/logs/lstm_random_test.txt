@@ -13,6 +13,10 @@ positive: 0.8858
 negative        10860       1640
 positive         1428      11072
 
+测试集长度统计（分词后的原始词数，不受截断影响）:
+  样本数 25000，平均 228.4 词，中位数 172 词，最长 2246 词
+  超过 256 词: 6980 条（27.9%）
+
 按评论长度分组的准确率（分词后的原始词数，不受截断影响）:
   0~562 词: 23625 条, acc 0.8819
   562~1123 词: 1368 条, acc 0.8004
@@ -24,6 +28,16 @@ positive         1428      11072
   6~13%: 2208 条, acc 0.8274
   13~19%: 79 条, acc 0.8734
   19~26%: 6 条, acc 0.6667
+
+长文本错例（原始词数 > 256，错例池 1184 条，按置信度取前 3）:
+  [长文本] 真实 negative -> 预测 positive, 置信度 0.9976, 原始 303 词, OOV 2.6% | Lois Weber's film "Hypocrites" was and still kind of is a very bold and daring film. I enjoyed it and was very impressed by the filming and story of it. The pri ... d through auditory. Even the music of the piano throughout this film is very beautiful and fitting with the whole theme.
+  [长文本] 真实 negative -> 预测 positive, 置信度 0.9953, 原始 758 词, OOV 2.2% | The Brave One is about a New York radio show host named Erica Bain (Jodie Foster). Her life is a dream living in the city she grew up in and loves. She has her ... One a 1.5 out of 4. The message is very out of line and morally incorrect, and really can't be saved by the good acting.
+  [长文本] 真实 negative -> 预测 positive, 置信度 0.9945, 原始 749 词, OOV 8.1% | This is a fact that this is the 1st Saudi feature film to be shown in cinema theaters but not in Saudi Arabia for a simple reason we don't have cinema theaters ... t he directed the 1st Saudi movie titled "Shadows of Silence". I haven't seen the movie yet .. I hope I've been helpful.
+
+高生僻词错例（<unk> 占比 >= 6%，错例池 491 条，按置信度取前 3）:
+  [生僻词] 真实 negative -> 预测 positive, 置信度 0.9981, 原始 172 词, OOV 6.4% | Synopsis Correction: The ending does not show Ben cruising online for guys. He is looking up Arabic Language courses at The Presido Military Acadamy in San Fran ... wenty" shows how far the blur between gay and straight as evolved. These two films are GAY Time Travel For Sure!!!!ENJOY
+  [生僻词] 真实 negative -> 预测 positive, 置信度 0.9945, 原始 749 词, OOV 8.1% | This is a fact that this is the 1st Saudi feature film to be shown in cinema theaters but not in Saudi Arabia for a simple reason we don't have cinema theaters ... t he directed the 1st Saudi movie titled "Shadows of Silence". I haven't seen the movie yet .. I hope I've been helpful.
+  [生僻词] 真实 negative -> 预测 positive, 置信度 0.9923, 原始 73 词, OOV 6.8% | This film has the language, the style and the attitude down ... plus greats rides from Occy (a world champ) and the great Jerry Lopez. John Philbin as Turtle ha ... Nia Peeples is a babe, and Laird Hamilton shows the early stuff that has made him the world's number one extreme surfer.
 
 高置信错例 Top 20（真实 -> 预测, 置信度）:
   negative -> positive, 置信度 0.9998 | This film derives from a Long Running ITV sitcom by the same name.The Sitcom lasted for half a decade roughly and brought to our screens Rigsby,Phillip,Alan,Mrs Jones & Vienna.<br /><br />Then in 1980

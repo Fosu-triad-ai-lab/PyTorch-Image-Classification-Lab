@@ -3,6 +3,7 @@
 import argparse
 import csv
 import math
+import re
 from pathlib import Path
 
 import matplotlib
@@ -28,6 +29,9 @@ def parse_args():
     parser.add_argument("--batch-size", type=int, default=128)
     parser.add_argument("--bucket-count", type=int, default=4, help="长度/OOV 分组数")
     parser.add_argument("--max-examples", type=int, default=20, help="错例展示条数")
+    parser.add_argument(
+        "--max-group-examples", type=int, default=3, help="长文本/生僻词每组展示条数"
+    )
     parser.add_argument("--figure-dir", type=str, default="figures")
     parser.add_argument("--log-dir", type=str, default="logs")
     parser.add_argument("--device", type=str, default="auto", choices=["auto", "cpu", "cuda"])
@@ -76,6 +80,15 @@ def bucket_accuracy(values, correct, bucket_count):
         acc = float(correct[mask].mean()) if count else float("nan")
         rows.append((f"{lo:.0f}~{hi:.0f}", count, acc))
     return rows
+
+
+def clean_snippet(text, head=160, tail=120):
+    """去掉 HTML 标签并压缩空白；长文本保留开头和结尾。"""
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = " ".join(text.split())
+    if len(text) <= head + tail + 5:
+        return text
+    return text[:head].rstrip() + " ... " + text[-tail:].lstrip()
 
 
 def main():
@@ -150,6 +163,15 @@ def main():
         [sum(1 for w in tokenize(t) if w not in stoi) for t in test_texts]
     )
     oov_rates = oov_counts / np.maximum(full_lengths, 1)
+    max_len = train_args["max_len"]
+    length_stats = {
+        "count": int(len(full_lengths)),
+        "mean": float(full_lengths.mean()),
+        "median": float(np.median(full_lengths)),
+        "max": int(full_lengths.max()),
+        "over_max_len": int((full_lengths > max_len).sum()),
+        "over_max_len_ratio": float((full_lengths > max_len).mean()),
+    }
 
     length_rows = bucket_accuracy(full_lengths, correct_all, args.bucket_count)
     oov_rows = bucket_accuracy(oov_rates * 100, correct_all, args.bucket_count)
@@ -158,6 +180,12 @@ def main():
     wrong_idx = [i for i, ok in enumerate(correct_all) if not ok]
     wrong_idx.sort(key=lambda i: probs_all[i], reverse=True)
     examples = wrong_idx[: args.max_examples]
+
+    # 大纲要求按长文本/生僻词样本分析错误，单独挑出这两类的最高置信错例
+    long_wrong = [i for i in wrong_idx if full_lengths[i] > max_len]
+    long_examples = long_wrong[: args.max_group_examples]
+    oov_wrong = [i for i in wrong_idx if oov_rates[i] >= 0.06]
+    oov_examples = oov_wrong[: args.max_group_examples]
 
     lines = [
         f"模型: {checkpoint_path}",
@@ -175,10 +203,47 @@ def main():
     for i, name in enumerate(LABEL_NAMES):
         lines.append(f"{name:<11s} " + "  ".join(f"{confusion[i, j]:>9d}" for j in range(2)))
 
+    lines += ["", "测试集长度统计（分词后的原始词数，不受截断影响）:"]
+    lines += [
+        f"  样本数 {length_stats['count']}，平均 {length_stats['mean']:.1f} 词，"
+        f"中位数 {length_stats['median']:.0f} 词，最长 {length_stats['max']} 词"
+    ]
+    lines += [
+        f"  超过 {max_len} 词: {length_stats['over_max_len']} 条"
+        f"（{length_stats['over_max_len_ratio']:.1%}）"
+    ]
     lines += ["", "按评论长度分组的准确率（分词后的原始词数，不受截断影响）:"]
     lines += [f"  {name} 词: {count} 条, acc {acc:.4f}" for name, count, acc in length_rows]
     lines += ["", "按 <unk>（生僻词/未登录词）占比分组的准确率:"]
     lines += [f"  {name}%: {count} 条, acc {acc:.4f}" for name, count, acc in oov_rows]
+
+    lines += [
+        "",
+        f"长文本错例（原始词数 > {max_len}，错例池 {len(long_wrong)} 条，"
+        f"按置信度取前 {len(long_examples)}）:",
+    ]
+    for i in long_examples:
+        lines.append(
+            f"  [长文本] 真实 {LABEL_NAMES[test_labels[i]]} -> 预测 {LABEL_NAMES[preds_all[i]]}, "
+            f"置信度 {probs_all[i]:.4f}, 原始 {full_lengths[i]} 词, OOV {oov_rates[i]:.1%} | "
+            f"{clean_snippet(test_texts[i])}"
+        )
+    if not long_examples:
+        lines.append("  无")
+
+    lines += [
+        "",
+        f"高生僻词错例（<unk> 占比 >= 6%，错例池 {len(oov_wrong)} 条，"
+        f"按置信度取前 {len(oov_examples)}）:",
+    ]
+    for i in oov_examples:
+        lines.append(
+            f"  [生僻词] 真实 {LABEL_NAMES[test_labels[i]]} -> 预测 {LABEL_NAMES[preds_all[i]]}, "
+            f"置信度 {probs_all[i]:.4f}, 原始 {full_lengths[i]} 词, OOV {oov_rates[i]:.1%} | "
+            f"{clean_snippet(test_texts[i])}"
+        )
+    if not oov_examples:
+        lines.append("  无")
 
     lines += ["", f"高置信错例 Top {len(examples)}（真实 -> 预测, 置信度）:"]
     for i in examples:
@@ -207,11 +272,39 @@ def main():
         for name, count, acc in oov_rows:
             writer.writerow(["oov_rate", name, count, f"{acc:.4f}"])
 
+    examples_path = log_dir / f"{run_name}_error_examples.csv"
+    with open(examples_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(
+            ["group", "test_index", "true", "pred", "confidence", "length", "oov_rate", "snippet"]
+        )
+        for group, group_examples in (("long", long_examples), ("oov", oov_examples)):
+            for i in group_examples:
+                writer.writerow(
+                    [
+                        group,
+                        i,
+                        LABEL_NAMES[test_labels[i]],
+                        LABEL_NAMES[preds_all[i]],
+                        f"{probs_all[i]:.4f}",
+                        int(full_lengths[i]),
+                        f"{oov_rates[i]:.4f}",
+                        clean_snippet(test_texts[i]),
+                    ]
+                )
+
     print(f"测试损失: {test_loss:.4f}")
     print(f"测试准确率: {test_acc:.4f}")
+    print(
+        f"测试集长度: 平均 {length_stats['mean']:.1f} 词，"
+        f"中位数 {length_stats['median']:.0f} 词，最长 {length_stats['max']} 词，"
+        f"超过 {max_len} 词 {length_stats['over_max_len']} 条"
+        f"（{length_stats['over_max_len_ratio']:.1%}）"
+    )
     print(f"评估报告: {report_path}")
     print(f"混淆矩阵: {cm_path}")
     print(f"分组准确率: {csv_path}")
+    print(f"错例明细: {examples_path}")
 
 
 if __name__ == "__main__":

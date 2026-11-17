@@ -267,10 +267,14 @@ def main():
     curve_path = figure_dir / f"{run_name}_curves.png"
     plot_curves(history, curve_path, run_name)
 
+    time_path = log_dir / f"{run_name}_train_time.txt"
+    time_path.write_text(f"{elapsed:.1f}\n", encoding="utf-8")
+
     print(f"\n训练结束，耗时 {elapsed / 60:.1f} 分钟，最优验证准确率: {best_val_acc:.4f}")
     print(f"日志: {csv_path}")
     print(f"曲线: {curve_path}")
     print(f"最优模型: {checkpoint_path}")
+    print(f"训练耗时: {time_path}")
 
 
 if __name__ == "__main__":

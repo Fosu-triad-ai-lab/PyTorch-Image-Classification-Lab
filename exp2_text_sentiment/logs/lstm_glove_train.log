@@ -1,0 +1,29 @@
+实验名: lstm_glove
+设备: cuda
+词表大小: 20000（词频 >= 2，上限 20000）
+GloVe 命中率: 95.75%（词表 19998 个实词中命中 19148 个）
+训练集 22500 条，验证集 2500 条
+参数量: 2.12M
+Epoch 01/10 | train loss 0.6164 acc 0.6545 | val loss 0.5805 acc 0.7088
+  -> 保存最优模型（val acc 0.7088）
+Epoch 02/10 | train loss 0.4941 acc 0.7731 | val loss 0.4277 acc 0.8252
+  -> 保存最优模型（val acc 0.8252）
+Epoch 03/10 | train loss 0.3767 acc 0.8416 | val loss 0.3401 acc 0.8640
+  -> 保存最优模型（val acc 0.8640）
+Epoch 04/10 | train loss 0.2726 acc 0.8931 | val loss 0.3292 acc 0.8708
+  -> 保存最优模型（val acc 0.8708）
+Epoch 05/10 | train loss 0.2049 acc 0.9250 | val loss 0.3127 acc 0.8760
+  -> 保存最优模型（val acc 0.8760）
+Epoch 06/10 | train loss 0.1613 acc 0.9430 | val loss 0.3432 acc 0.8724
+Epoch 07/10 | train loss 0.1298 acc 0.9549 | val loss 0.3583 acc 0.8792
+  -> 保存最优模型（val acc 0.8792）
+Epoch 08/10 | train loss 0.1049 acc 0.9640 | val loss 0.3661 acc 0.8760
+Epoch 09/10 | train loss 0.0858 acc 0.9699 | val loss 0.4291 acc 0.8796
+  -> 保存最优模型（val acc 0.8796）
+Epoch 10/10 | train loss 0.0679 acc 0.9770 | val loss 0.4272 acc 0.8672
+
+训练结束，耗时 0.6 分钟，最优验证准确率: 0.8796
+日志: /home/asus_gx10/cnn/lucky/lab/exp2_text_sentiment/logs/lstm_glove.csv
+曲线: /home/asus_gx10/cnn/lucky/lab/exp2_text_sentiment/figures/lstm_glove_curves.png
+最优模型: /home/asus_gx10/cnn/lucky/lab/exp2_text_sentiment/checkpoints/lstm_glove.pth
+训练耗时: /home/asus_gx10/cnn/lucky/lab/exp2_text_sentiment/logs/lstm_glove_train_time.txt

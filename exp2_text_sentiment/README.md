@@ -70,7 +70,7 @@ python noise_test.py --checkpoints checkpoints/lstm_random.pth checkpoints/lstm_
 ```
 
 常用参数：`--epochs 1` 冒烟、`--vocab-size`、`--max-len`、`--batch-size`（64 起步可试 128/256）、
-`--lr`、`--hidden-size`、`--device cpu`。
+`--lr`、`--hidden-size`、`--device cpu`；`evaluate.py --max-group-examples` 控制长文本/生僻词错例展示条数（默认 3）。
 
 ## 默认超参数
 
@@ -90,8 +90,11 @@ python noise_test.py --checkpoints checkpoints/lstm_random.pth checkpoints/lstm_
 
 - `logs/lstm_{random,glove}.csv`：每轮训练/验证 loss、准确率
 - `logs/lstm_{random,glove}_config.json`：本次运行完整参数（含 GloVe 命中率）
-- `logs/lstm_{random,glove}_test.txt`：测试报告、混淆矩阵、长度/生僻词分组、高置信错例
+- `logs/lstm_{random,glove}_train.log`：训练控制台日志
+- `logs/lstm_{random,glove}_train_time.txt`：训练耗时（秒）
+- `logs/lstm_{random,glove}_test.txt`：测试报告、混淆矩阵、长度统计、长度/生僻词分组、具体长文本/生僻词错例、高置信错例
 - `logs/lstm_{random,glove}_buckets.csv`：分组准确率
+- `logs/lstm_{random,glove}_error_examples.csv`：长文本/生僻词错例明细（test_index、置信度、长度、OOV 占比）
 - `logs/noise_results.csv`：噪声实验全部数字
 - `figures/lstm_{random,glove}_curves.png`：loss/accuracy 曲线
 - `figures/lstm_{random,glove}_confusion_matrix.png`：混淆矩阵
@@ -104,11 +107,12 @@ python noise_test.py --checkpoints checkpoints/lstm_random.pth checkpoints/lstm_
 
 | 实验 | 最好验证准确率 | 最好轮次 | 测试准确率 | 测试损失 | 训练耗时 |
 | --- | --- | --- | --- | --- | --- |
-| `lstm_random` | **88.32%** | 9 | **87.73%** | 0.2999 | 0.6 分钟 |
-| `lstm_glove` | 87.96% | 9 | 85.85% | 0.4765 | 0.6 分钟 |
+| `lstm_random` | **88.32%** | 9 | **87.73%** | 0.2999 | 35.4 秒 |
+| `lstm_glove` | 87.96% | 9 | 85.85% | 0.4765 | 36.2 秒 |
 
-GloVe 词表命中率 95.75%（词表 19998 个实词命中 19150 个）。
-每组训练 GB10 上 0.6 分钟，全部实验（两组训练 + 评估 + 噪声）合计约 4 分钟。
+GloVe 词表命中率 95.75%（词表 19998 个实词命中 19148 个）。
+两组训练在 GB10 上分别耗时 35.4 秒、36.2 秒（见 `logs/*_train_time.txt`），
+全部实验（两组训练 + 评估 + 噪声）合计约 4 分钟。
 
 ### 噪声鲁棒性（测试集扰动后的准确率）
 
@@ -120,7 +124,7 @@ GloVe 词表命中率 95.75%（词表 19998 个实词命中 19150 个）。
 | 0.3 | 84.72% | 82.82% | 82.60% | 76.93% |
 | 0.4 | 83.54% | 81.87% | 79.42% | 73.03% |
 
-以 `logs/` 和 `figures/` 里的实际数字为准；详细分析见 `docs/实验2报告.md`（待写）。
+以 `logs/` 和 `figures/` 里的实际数字为准；详细分析见 `docs/实验2报告.md`。
 
 ## 复现说明
 
