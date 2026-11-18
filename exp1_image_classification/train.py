@@ -3,6 +3,7 @@
 import argparse
 import csv
 import json
+import platform
 import random
 from pathlib import Path
 
@@ -187,7 +188,20 @@ def main():
     config_path = log_dir / f"{run_name}_config.json"
     with open(config_path, "w", encoding="utf-8") as f:
         json.dump(
-            {**vars(args), "run_name": run_name, "device": str(device)},
+            {
+                **vars(args),
+                "run_name": run_name,
+                "device": str(device),
+                # 运行环境版本，便于复现核对
+                "python_version": platform.python_version(),
+                "torch_version": torch.__version__,
+                "cuda_version": torch.version.cuda,
+                "gpu": (
+                    torch.cuda.get_device_name(0)
+                    if torch.cuda.is_available()
+                    else "cpu"
+                ),
+            },
             f,
             ensure_ascii=False,
             indent=2,

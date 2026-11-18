@@ -89,8 +89,8 @@ python noise_test.py --checkpoints checkpoints/lstm_random.pth checkpoints/lstm_
 ## 输出
 
 - `logs/lstm_{random,glove}.csv`：每轮训练/验证 loss、准确率
-- `logs/lstm_{random,glove}_config.json`：本次运行完整参数（含 GloVe 命中率）
-- `logs/lstm_{random,glove}_train.log`：训练控制台日志
+- `logs/lstm_{random,glove}_config.json`：本次运行完整参数（含 GloVe 命中率、Python/torch 环境版本）
+- `logs/lstm_{random,glove}_train.log`：训练日志（train.py 自动落盘）
 - `logs/lstm_{random,glove}_train_time.txt`：训练耗时（秒）
 - `logs/lstm_{random,glove}_test.txt`：测试报告、混淆矩阵、长度统计、长度/生僻词分组、具体长文本/生僻词错例、高置信错例
 - `logs/lstm_{random,glove}_buckets.csv`：分组准确率

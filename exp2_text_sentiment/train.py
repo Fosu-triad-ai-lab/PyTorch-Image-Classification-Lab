@@ -3,6 +3,7 @@
 import argparse
 import csv
 import json
+import platform
 import random
 import time
 from pathlib import Path
@@ -153,8 +154,17 @@ def main():
     for directory in (checkpoint_dir, log_dir, figure_dir):
         directory.mkdir(parents=True, exist_ok=True)
 
-    print(f"实验名: {run_name}")
-    print(f"设备: {device}")
+    # 训练过程日志落盘：控制台输出的同时写入 logs/{run_name}_train.log
+    log_path = log_dir / f"{run_name}_train.log"
+    log_file = log_path.open("w", encoding="utf-8")
+
+    def log(msg):
+        print(msg)
+        log_file.write(f"{msg}\n")
+        log_file.flush()
+
+    log(f"实验名: {run_name}")
+    log(f"设备: {device}")
 
     # 1. 词表：只用训练集文本构建，验证/测试集一律通过 <unk> 映射
     train_texts_all, train_labels_all = None, None
@@ -163,21 +173,21 @@ def main():
 
     train_texts_all, train_labels_all = read_split(data_dir, "train")
     stoi, itos = build_vocab(train_texts_all, args.vocab_size, args.min_freq)
-    print(f"词表大小: {len(itos)}（词频 >= {args.min_freq}，上限 {args.vocab_size}）")
+    log(f"词表大小: {len(itos)}（词频 >= {args.min_freq}，上限 {args.vocab_size}）")
 
     # 2. 词向量初始化
     embedding_matrix, hit_rate = None, 0.0
     if args.embedding_init == "glove":
         glove_path = resolve_path(args.glove_path)
         embedding_matrix, hit_rate = load_glove_matrix(itos, glove_path)
-        print(f"GloVe 命中率: {hit_rate:.2%}（词表 {len(itos) - 2} 个实词中命中 "
-              f"{round(hit_rate * (len(itos) - 2))} 个）")
+        log(f"GloVe 命中率: {hit_rate:.2%}（词表 {len(itos) - 2} 个实词中命中 "
+            f"{round(hit_rate * (len(itos) - 2))} 个）")
 
     # 3. 数据加载器（训练集内部再切 9:1 训练/验证）
     train_loader, val_loader, _, _ = build_dataloaders(
         data_dir, stoi, args.batch_size, args.max_len, args.val_ratio
     )
-    print(f"训练集 {len(train_loader.dataset)} 条，验证集 {len(val_loader.dataset)} 条")
+    log(f"训练集 {len(train_loader.dataset)} 条，验证集 {len(val_loader.dataset)} 条")
 
     model = SentimentLSTM(
         vocab_size=len(itos),
@@ -188,7 +198,7 @@ def main():
         pad_idx=0,
         embedding_matrix=embedding_matrix,
     ).to(device)
-    print(f"参数量: {sum(p.numel() for p in model.parameters()) / 1e6:.2f}M")
+    log(f"参数量: {sum(p.numel() for p in model.parameters()) / 1e6:.2f}M")
 
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(
@@ -206,6 +216,15 @@ def main():
                 "device": str(device),
                 "vocab_built": len(itos),
                 "glove_hit_rate": hit_rate,
+                # 运行环境版本，便于复现核对
+                "python_version": platform.python_version(),
+                "torch_version": torch.__version__,
+                "cuda_version": torch.version.cuda,
+                "gpu": (
+                    torch.cuda.get_device_name(0)
+                    if torch.cuda.is_available()
+                    else "cpu"
+                ),
             },
             f,
             ensure_ascii=False,
@@ -241,7 +260,7 @@ def main():
             )
             f.flush()
 
-            print(
+            log(
                 f"Epoch {epoch:02d}/{args.epochs} | "
                 f"train loss {train_loss:.4f} acc {train_acc:.4f} | "
                 f"val loss {val_loss:.4f} acc {val_acc:.4f}"
@@ -261,7 +280,7 @@ def main():
                     },
                     checkpoint_path,
                 )
-                print(f"  -> 保存最优模型（val acc {best_val_acc:.4f}）")
+                log(f"  -> 保存最优模型（val acc {best_val_acc:.4f}）")
 
     elapsed = time.time() - start
     curve_path = figure_dir / f"{run_name}_curves.png"
@@ -270,11 +289,12 @@ def main():
     time_path = log_dir / f"{run_name}_train_time.txt"
     time_path.write_text(f"{elapsed:.1f}\n", encoding="utf-8")
 
-    print(f"\n训练结束，耗时 {elapsed / 60:.1f} 分钟，最优验证准确率: {best_val_acc:.4f}")
-    print(f"日志: {csv_path}")
-    print(f"曲线: {curve_path}")
-    print(f"最优模型: {checkpoint_path}")
-    print(f"训练耗时: {time_path}")
+    log(f"\n训练结束，耗时 {elapsed / 60:.1f} 分钟，最优验证准确率: {best_val_acc:.4f}")
+    log(f"日志: {csv_path}")
+    log(f"曲线: {curve_path}")
+    log(f"最优模型: {checkpoint_path}")
+    log(f"训练耗时: {time_path}")
+    log_file.close()
 
 
 if __name__ == "__main__":
