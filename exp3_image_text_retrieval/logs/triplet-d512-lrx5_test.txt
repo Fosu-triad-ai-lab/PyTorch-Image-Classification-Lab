@@ -1,0 +1,12 @@
+模型: /home/asus_gx10/cnn/lucky/lab/exp3_image_text_retrieval/checkpoints/triplet-d512-lrx5.pth
+训练轮次: 5
+评估划分: test
+样本: 1000 图 / 5000 条描述
+图像 -> 文本 Recall@1: 0.0020
+图像 -> 文本 Recall@5: 0.0070
+图像 -> 文本 Recall@10: 0.0080
+图像 -> 文本 中位排名: 699
+文本 -> 图像 Recall@1: 0.0010
+文本 -> 图像 Recall@5: 0.0052
+文本 -> 图像 Recall@10: 0.0100
+文本 -> 图像 中位排名: 500

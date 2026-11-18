@@ -1,0 +1,12 @@
+模型: /home/asus_gx10/cnn/lucky/lab/exp3_image_text_retrieval/checkpoints/infonce-d512-ep30.pth
+训练轮次: 14
+评估划分: test
+样本: 1000 图 / 5000 条描述
+图像 -> 文本 Recall@1: 0.1770
+图像 -> 文本 Recall@5: 0.3810
+图像 -> 文本 Recall@10: 0.5130
+图像 -> 文本 中位排名: 10
+文本 -> 图像 Recall@1: 0.1200
+文本 -> 图像 Recall@5: 0.3440
+文本 -> 图像 Recall@10: 0.4824
+文本 -> 图像 中位排名: 11
