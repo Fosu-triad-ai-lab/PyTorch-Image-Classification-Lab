@@ -153,7 +153,7 @@ python train.py --loss triplet --embed-dim 256 --epochs 10 --run-name triplet-d2
 主要结论：
 
 - **嵌入维度**：同口径（InfoNCE、10 epoch）下 d512 > d256 > d128；d512 在 10 epoch 时最优轮是第 10 轮、尚未到平台，加长到 30 epoch 后 test R@1 从 16.20% 升到 17.70%（最优轮 14）。每 epoch 约 1 秒，加长成本很低。
-- **损失函数**：batch-hard 三元组损失（余弦相似度 + margin 0.2）在本设置下无法收敛——d256/d512/lr×5+30 epoch 三组 R@1 全部 ≤ 0.4%（近似随机，中位排名 550–800），train_loss 长期卡在 margin 尺度附近；而 InfoNCE 带 temperature 0.07 缩放，正常收敛。说明温度缩放在该任务上不可省。
+- **损失函数**：batch-hard 三元组损失（余弦相似度 + margin 0.2）在本设置下无法收敛——d256/d512/lr×5+30 epoch 三组 R@1 全部 ≤ 0.4%（与随机检索相当，中位排名 550–800），train_loss 长期卡在 margin 尺度附近；而 InfoNCE 带 temperature 0.07 缩放，正常收敛。说明温度缩放在该任务上不可省。
 - **冻结 vs 微调 BERT**：同口径（d512、10 epoch）下微调 16.20% 对冻结 9.60%，小数据下微调文本编码器帮助明显。
 - 基线（10 epoch）测试集图像→文本中位排名 12，文本→图像中位排名 14；30 epoch d512 分别为 10 和 11。
 
