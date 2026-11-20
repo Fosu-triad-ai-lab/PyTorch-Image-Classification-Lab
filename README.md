@@ -6,58 +6,20 @@
 
 ## 当前项目结构
 
-> 以实际文件为准。新增、删除、重命名文件夹或关键文件时，**必须在同一个 commit 里更新这一节**。
+> 以实际存在的文件夹为准。新增、删除、重命名文件夹时，**必须在同一个 commit 里更新这一节**；增删关键文件则同步更新文件夹注释和下面的「文件索引」。
 
 ```text
 PyTorch-Image-Classification-Lab/
 ├─ README.md                     # 本文件：结构索引 + 使用约定
 ├─ AGENTS.md                     # 给 AI 助手的工作规则
 ├─ .gitignore                    # 不提交的数据、权重、密钥
-├─ docs/
-│  ├─ _AI项目实训_实验大纲.pdf                        # 课程要求原文
-│  ├─ 项目规范.md                                    # 目录、命名、代码、Git 约定
-│  ├─ 节点使用说明.md                                # DGX 节点连接、传文件、tmux
-│  ├─ Spark云节点访问与使用手册(华硕).md             # 官方节点手册（Markdown 版）
-│  ├─ Spark云节点访问与使用手册(华硕) - 飞书云文档.pdf  # 官方节点手册（PDF 原件）
-│  ├─ 实验1报告.md                                   # 实验1 报告（结果与分析）
-│  ├─ 实验2报告.md                                   # 实验2 报告（词向量对比、噪声实验、错例分析）
-│  └─ 实验3报告.md                                   # 实验3 报告（维度/损失/冻结对比、检索误差分析）
+├─ docs/                         # 课程资料、项目规范、节点说明、复刻指南、三份实验报告
 ├─ exp1_image_classification/    # 实验1：CIFAR-10 图像分类
-│  ├─ README.md                  # 实验说明、运行方法、超参数、结果记录
-│  ├─ data.py                    # 数据加载、划分、增强
-│  ├─ model.py                   # 轻量 CNN（BN/Dropout 可开关）
-│  ├─ train.py                   # 训练入口
-│  ├─ evaluate.py                # 测试集评估、混淆矩阵、错例图
-│  ├─ data/                      # CIFAR-10 数据（不进 Git）
-│  ├─ figures/                   # 曲线、混淆矩阵、错例图
-│  ├─ logs/                      # CSV 日志、配置、测试报告
-│  └─ checkpoints/               # 模型权重（不进 Git）
 ├─ exp2_text_sentiment/          # 实验2：IMDB 文本情感分类
-│  ├─ README.md                  # 实验说明、数据下载方法、超参数、结果记录
-│  ├─ data.py                    # 清洗分词、词表、GloVe 加载、DataLoader
-│  ├─ model.py                   # Embedding+LSTM 情感二分类
-│  ├─ train.py                   # 训练入口（随机/GloVe 词向量对比）
-│  ├─ evaluate.py                # 测试评估、混淆矩阵、长度/生僻词分组、错例
-│  ├─ noise_test.py              # 噪声鲁棒性实验（替换/删词）
-│  ├─ data/                      # aclImdb + GloVe（不进 Git）
-│  ├─ figures/                   # 曲线、混淆矩阵、噪声曲线
-│  ├─ logs/                      # CSV 日志、配置、测试报告
-│  └─ checkpoints/               # 模型权重（不进 Git）
 └─ exp3_image_text_retrieval/    # 实验3：Flickr8k 图文检索
-   ├─ README.md                  # 数据审计、模型方案、运行方法、基线结果
-   ├─ data.py                    # Flickr8k 解析、划分校验、特征缓存加载
-   ├─ precompute_features.py     # 冻结 ResNet18 预计算图像特征
-   ├─ model.py                   # 图像/文本投影头、BERT-tiny、对比损失
-   ├─ encoding.py                # 批量文本编码
-   ├─ retrieval.py               # Recall@K / 中位排名
-   ├─ train.py                   # 训练入口
-   ├─ evaluate.py                # 测试集检索评估、检索示例
-   ├─ rank_stats.py              # 真值排名分布与失败统计（报告 8.1 数字来源）
-   ├─ data/                      # Flickr8k + BERT-tiny + 特征缓存（不进 Git）
-   ├─ figures/                   # 训练曲线、检索示例图
-   ├─ logs/                      # CSV、配置、测试报告
-   └─ checkpoints/               # 模型权重（不进 Git）
 ```
+
+三个实验文件夹内部结构一致（`README.md` + 代码 + `data/`、`figures/`、`logs/`、`checkpoints/`），模板见下文「实验文件夹的标准结构」；每个文件的作用写在各实验 `README.md` 的「文件说明」表里，`data/` 和 `checkpoints/` 不进 Git。
 
 ### 文件索引：什么问题读哪个文件
 
@@ -68,6 +30,7 @@ PyTorch-Image-Classification-Lab/
 | `docs/节点使用说明.md` | SSH 连接、代码同步、传文件、tmux、常见报错 | 要用 DGX 节点训练时 |
 | `docs/Spark云节点访问与使用手册(华硕).md` | 官方手册：端口、隧道、文件传输、使用红线 | 查节点规则和端口时 |
 | `docs/_AI项目实训_实验大纲.pdf` | 课程要求、实验内容、学时、评分 | 写报告、确认要求时 |
+| `docs/复刻指南.md` | 另外两位同学复刻实验1～3的完整流程 | 准备复刻实验时 |
 | `exp1_image_classification/README.md` | 实验1 的数据集、跑法、超参数、结果记录 | 跑实验1 时 |
 | `exp2_text_sentiment/README.md` | 实验2 的数据下载、跑法、超参数、噪声实验结果 | 跑实验2 时 |
 | `exp3_image_text_retrieval/README.md` | 实验3 的数据审计、模型方案、运行命令、基线结果 | 跑实验3 时 |
@@ -103,7 +66,7 @@ expX_xxx/
 
 ## 维护规则：动文件夹就更新结构
 
-1. 新增、删除、重命名文件夹，或者增删关键文件，**在同一个 commit 里更新上面的「当前项目结构」**。
+1. 新增、删除、重命名文件夹，**在同一个 commit 里更新上面的「当前项目结构」**；增删关键文件时，同步更新文件夹注释行和「文件索引」。
 2. 当前结构只写实际存在的东西；还没建的实验文件夹放到「标准结构」一节，不要混进当前结构。
 3. 每个实验的 `README.md` 至少写清楚：数据集、怎么跑、主要超参数、最好结果、跑了多久。
 4. AI 助手改目录结构时也必须遵守这条；不确定放哪先问 Lucky。
