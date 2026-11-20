@@ -13,7 +13,7 @@
 - 划分内共 8000 张图、40000 条描述；另有 91 张真实图片不在官方划分中（455 条描述），不参与训练和评估。
 - 原始 `Flickr8k.token.txt` 里有一个坏文件名 `2258277193_586949ec62.jpg.1`，磁盘上没有对应图片，也不在任何划分中，读取时跳过。
 - 全部 8091 张图片可正常打开；图像尺寸有 597 种，最常见的是 500×333（1523 张）和 500×375（1299 张）。
-- 描述平均 10.8 个词，中位数 10，P95 18，最长 37；描述词表 8493。BERT 最大长度设为 48 个 token。
+- 描述按 `[a-z0-9']+` 切词后平均 10.8 个词，中位数 10，P95 18，最长 37（按划分内 40000 条统计）；全部 8091 张图的描述词表 8493。BERT 最大长度设为 48 个 token。
 
 数据目录（不进 Git）：
 
@@ -97,6 +97,7 @@ python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple "transformers<
 | `retrieval.py` | Recall@K、中位排名 |
 | `train.py` | 训练入口：argparse、固定种子、每轮验证、保存最优模型、画曲线 |
 | `evaluate.py` | 测试集检索指标、定性示例 CSV/图片 |
+| `rank_stats.py` | 真值排名分布、失败样本统计（报告 8.1 数字来源） |
 | `data/` | Flickr8k、BERT-tiny、ResNet18 特征缓存（不进 Git） |
 | `figures/` | 训练曲线、检索示例图 |
 | `logs/` | CSV、配置、测试报告、检索示例、训练耗时 |
@@ -162,7 +163,7 @@ python train.py --loss triplet --embed-dim 256 --epochs 10 --run-name triplet-d2
 1. ~~嵌入维度：128 / 256 / 512，固定 InfoNCE 和 10 epoch，比较 R@1/5/10。~~ 已跑（含 30 epoch 收敛参考）。
 2. ~~损失函数：InfoNCE vs batch-hard 三元组，固定最佳维度。~~ 已跑；triplet 各组均未收敛，另补 lr×5 诊断组确认非学习率问题。
 3. ~~可选：冻结 BERT vs 微调 BERT，观察小数据下预训练特征的适配程度。~~ 已跑。
-4. 误差分析：从 `logs/<run>_test_examples.csv` 和检索示例图挑失败样本，分析模态异构、细粒度物体、计数/关系描述等错误原因。**待做**。
+4. ~~误差分析：从 `logs/<run>_test_examples.csv` 和检索示例图挑失败样本，分析模态异构、细粒度物体、计数/关系描述等错误原因。~~ 已完成，见 `docs/实验3报告.md` 第八节；排名分布等定量统计由 `rank_stats.py` 生成（`logs/infonce-d512-ep30_rank_stats.txt`）。
 
 ## 复现说明
 
