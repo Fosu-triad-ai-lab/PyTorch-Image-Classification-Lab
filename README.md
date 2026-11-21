@@ -1,6 +1,6 @@
 # PyTorch 图像分类实验仓库
 
-佛山大学《AI 项目实训》课程仓库，包含 4 个实验。目前实验1、实验2、实验3 的代码、对比实验和报告初稿已完成，实验4 待开始。
+佛山大学《AI 项目实训》课程仓库，包含 4 个实验。目前实验1、实验2、实验3 的代码、对比实验和报告（md 初稿 + docx/PDF 正式版）已完成，实验4 待开始。
 
 课程要求原文在 `docs/_AI项目实训_实验大纲.pdf`，代码和文档写法以 `docs/项目规范.md` 为准。
 
@@ -13,7 +13,7 @@ PyTorch-Image-Classification-Lab/
 ├─ README.md                     # 本文件：结构索引 + 使用约定
 ├─ AGENTS.md                     # 给 AI 助手的工作规则
 ├─ .gitignore                    # 不提交的数据、权重、密钥
-├─ docs/                         # 课程资料、项目规范、节点说明、复刻指南、三份实验报告
+├─ docs/                         # 课程资料、项目规范、节点说明、复刻指南、三份实验报告（md 初稿 + docx/PDF 正式版）
 ├─ exp1_image_classification/    # 实验1：CIFAR-10 图像分类
 ├─ exp2_text_sentiment/          # 实验2：IMDB 文本情感分类
 └─ exp3_image_text_retrieval/    # 实验3：Flickr8k 图文检索
@@ -37,6 +37,7 @@ PyTorch-Image-Classification-Lab/
 | `docs/实验1报告.md` | 实验1 报告、四组对比结果、错例分析 | 写/改报告时 |
 | `docs/实验2报告.md` | 实验2 报告、词向量对比、噪声实验、错例分析 | 写/改报告时 |
 | `docs/实验3报告.md` | 实验3 报告、对比实验、检索误差分析 | 写/改报告时 |
+| `docs/实验1～3报告.docx / .pdf` | 三份报告的正式排版版（封面 + 目录 + 正文），数字与 md 版一致 | 上交、打印、查报告时 |
 | `.gitignore` | 哪些文件不进 Git | 提交前 |
 
 ## 实验文件夹的标准结构（建好后）
