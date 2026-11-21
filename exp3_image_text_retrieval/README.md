@@ -66,11 +66,7 @@ done
 cd ../../..
 ```
 
-如果共享 venv 里没有 transformers：
-
-```bash
-python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple "transformers<5"
-```
+共享 venv 缺包时不要自己 `pip install`，在群里找 Lucky 统一安装（同 `docs/复刻指南.md` 第三节）。
 
 ## 模型方案
 
@@ -120,10 +116,18 @@ python train.py --loss infonce --embed-dim 256 --epochs 10 \
 # 3. 测试集评估
 python evaluate.py --checkpoint checkpoints/baseline-infonce-d256.pth --split test
 
-# 4. 维度 / 损失对比（示例）
+# 4. 维度 / 损失对比（其余 7 组完整命令，run 名与「结果记录」表一致）
 python train.py --loss infonce --embed-dim 128 --epochs 10 --run-name infonce-d128
 python train.py --loss infonce --embed-dim 512 --epochs 10 --run-name infonce-d512
+python train.py --loss infonce --embed-dim 512 --epochs 30 --run-name infonce-d512-ep30
+python train.py --loss infonce --embed-dim 512 --epochs 10 --freeze-text --run-name infonce-d512-frozen
 python train.py --loss triplet --embed-dim 256 --epochs 10 --run-name triplet-d256
+python train.py --loss triplet --embed-dim 512 --epochs 10 --run-name triplet-d512
+# 诊断组：学习率 ×5 + 30 epoch，用于确认 triplet 不收敛并非学习率问题
+python train.py --loss triplet --embed-dim 512 --epochs 30 --lr 5e-3 --text-lr 5e-4 --run-name triplet-d512-lrx5
+
+# 每组训练完都跑一次测试集评估（替换 --checkpoint 即可）
+python evaluate.py --checkpoint checkpoints/<实验名>.pth --split test
 ```
 
 常用参数：`--batch-size 128`、`--text-lr 1e-4`、`--lr 1e-3`、`--max-len 48`、
