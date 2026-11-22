@@ -13,7 +13,7 @@ PyTorch-Image-Classification-Lab/
 ├─ README.md                     # 本文件：结构索引 + 使用约定
 ├─ AGENTS.md                     # 给 AI 助手的工作规则
 ├─ .gitignore                    # 不提交的数据、权重、密钥
-├─ docs/                         # 课程资料、项目规范、节点说明、复刻指南、三份实验报告（md 初稿 + docx/PDF 正式版）
+├─ docs/                         # 课程资料、项目规范、节点说明、复刻指南、答辩复习、三份实验报告（md 初稿 + docx/PDF 正式版）
 ├─ exp1_image_classification/    # 实验1：CIFAR-10 图像分类
 ├─ exp2_text_sentiment/          # 实验2：IMDB 文本情感分类
 └─ exp3_image_text_retrieval/    # 实验3：Flickr8k 图文检索
@@ -31,6 +31,7 @@ PyTorch-Image-Classification-Lab/
 | `docs/Spark云节点访问与使用手册(华硕).md` | 官方手册：端口、隧道、文件传输、使用红线 | 查节点规则和端口时 |
 | `docs/_AI项目实训_实验大纲.pdf` | 课程要求、实验内容、学时、评分 | 写报告、确认要求时 |
 | `docs/复刻指南.md` | 另外两位同学复刻实验1～3的完整流程 | 准备复刻实验时 |
+| `docs/答辩复习.md` | 实验1～3 答辩概念题、为什么题、必背数字、自查清单 | 答辩前抽背复习时 |
 | `exp1_image_classification/README.md` | 实验1 的数据集、跑法、超参数、结果记录 | 跑实验1 时 |
 | `exp2_text_sentiment/README.md` | 实验2 的数据下载、跑法、超参数、噪声实验结果 | 跑实验2 时 |
 | `exp3_image_text_retrieval/README.md` | 实验3 的数据审计、模型方案、运行命令、基线结果 | 跑实验3 时 |
