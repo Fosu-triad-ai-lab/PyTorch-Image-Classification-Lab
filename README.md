@@ -1,6 +1,6 @@
 # PyTorch 图像分类实验仓库
 
-佛山大学《AI 项目实训》课程仓库，包含 4 个实验。目前实验1、实验2、实验3 的代码、对比实验和报告（md 初稿 + docx/PDF 正式版）已完成，实验4 待开始。
+佛山大学《AI 项目实训》课程仓库，包含 4 个实验。目前实验1、实验2、实验3 的代码、对比实验和报告（md 初稿 + docx/PDF 正式版）已完成；实验4 已立项（图像缺陷预测建模，Severstal 数据集），方案见 `exp4_modeling/README.md`。
 
 课程要求原文在 `docs/_AI项目实训_实验大纲.pdf`，代码和文档写法以 `docs/项目规范.md` 为准。
 
@@ -32,6 +32,7 @@ PyTorch-Image-Classification-Lab/
 | `docs/_AI项目实训_实验大纲.pdf` | 课程要求、实验内容、学时、评分 | 写报告、确认要求时 |
 | `docs/复刻指南.md` | 另外两位同学复刻实验1～3的完整流程 | 准备复刻实验时 |
 | `docs/答辩复习.md` | 实验1～3 答辩概念题、为什么题、必背数字、自查清单 | 答辩前抽背复习时 |
+| `exp4_modeling/README.md` | 实验4 选题方案：Severstal 数据、技术路线、分工、时间表、风险 | 实验4 开工、组内对进度时 |
 | `exp1_image_classification/README.md` | 实验1 的数据集、跑法、超参数、结果记录 | 跑实验1 时 |
 | `exp2_text_sentiment/README.md` | 实验2 的数据下载、跑法、超参数、噪声实验结果 | 跑实验2 时 |
 | `exp3_image_text_retrieval/README.md` | 实验3 的数据审计、模型方案、运行命令、基线结果 | 跑实验3 时 |
