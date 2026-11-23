@@ -35,5 +35,6 @@ id_ed25519*
 .vscode/
 .idea/
 .qoder/
+.codeartsdoer/
 .DS_Store
 Thumbs.db
